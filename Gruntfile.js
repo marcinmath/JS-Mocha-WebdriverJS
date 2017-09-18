@@ -10,7 +10,14 @@ module.exports = function (grunt) {
             }
         }
       },
-
+      junit_report: {
+          foo : {
+              options : {
+                  xmlFolder : "./reports/xml",
+                  outputFolder : "./output"
+              }
+          }
+      },
       parallel: {
         assets: {
             options: {
@@ -24,6 +31,7 @@ module.exports = function (grunt) {
     // load tasks
     grunt.loadNpmTasks('grunt-parallel');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-junit-report');
 
     // register tasks
     grunt.registerTask('default', ['parallel']);
