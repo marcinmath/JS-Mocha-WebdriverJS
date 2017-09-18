@@ -6,7 +6,7 @@ module.exports = function (grunt) {
       shell: {
         runTests: {
             command: function(platform, browser, version) {
-              return 'PLATFORM='+platform+' BROWSER='+browser+' VERSION='+version+' ./node_modules/.bin/parallel-mocha tests/*-spec.js --reporter xunit-file --timeout 60000'
+              return 'PLATFORM='+platform+' BROWSER='+browser+' VERSION='+version+' ./node_modules/.bin/parallel-mocha tests/*-spec.js'
             }
         }
       },
