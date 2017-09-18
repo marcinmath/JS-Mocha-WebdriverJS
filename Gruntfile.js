@@ -6,7 +6,7 @@ module.exports = function (grunt) {
       shell: {
         runTests: {
             command: function(platform, browser, version) {
-              return 'PLATFORM='+platform+' BROWSER='+browser+' VERSION='+version+' ./node_modules/.bin/parallel-mocha tests/*-spec.js'
+              return 'PLATFORM='+platform+' BROWSER='+browser+' VERSION='+version+' ./node_modules/.bin/parallel-mocha tests/*-spec.js --reporter xunit-file --timeout 60000'
             }
         }
       },
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
             options: {
                 grunt: true
             },
-            tasks: ['run_XP_firefox_42', 'run_Linux_chrome_45', 'run_Windows10_edge', 'run_Windows7_ie_11']
+            tasks: ['run_XP_firefox_42', 'run_Linux_chrome_45', 'run_Windows7_ie_11']
         }
       }
     });
@@ -30,6 +30,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('run_XP_firefox_42', ['shell:runTests:XP:firefox:42']);
     grunt.registerTask('run_Linux_chrome_45', ['shell:runTests:Linux:chrome:45']);
-    grunt.registerTask('run_Windows10_edge', ['shell:runTests:"Windows 10":MicrosoftEdge:20.10240']);
     grunt.registerTask('run_Windows7_ie_11', ['shell:runTests:"Windows 7":"internet explorer":11']);
 };
